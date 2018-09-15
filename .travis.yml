@@ -1,0 +1,51 @@
+language: java
+
+sudo: false
+
+notifications:
+  email:
+  - renato.mendes.1123@gmail.com
+
+# Defines stages
+stages:
+- name: compile
+- name: test
+- name: scan
+- name: deploy-development
+  if: branch = develop AND env(TRAVIS_PULL_REQUEST) = "false"
+- name: release
+  if: branch = master AND env(TRAVIS_PULL_REQUEST) = "false"
+
+jdk:
+- openjdk8
+
+cache:
+  directories:
+  - '$HOME/.m2'
+  - '$HOME/.sonar/cache'
+
+addons:
+  sonarcloud:
+    organization: "scipionyx-io-industrially"
+    projectKey: "scipionyx-io-industrially-starters"
+    token:
+      secure: 5d31480c120e3a014ffabe4fb506dd7d585c91e7
+
+jobs:
+  include:
+  - stage: compile
+    script: mvn -s settings.xml --batch-mode compile
+  - stage: test
+    script: mvn -s settings.xml --batch-mode test
+  - stage: scan
+    script: mvn -s settings.xml --batch-mode org.jacoco:jacoco-maven-plugin:prepare-agent sonar:sonar
+  - stage: deploy-development
+    script: mvn -s settings.xml --batch-mode deploy
+  - stage: release
+    script: |
+            mvn -s settings.xml \
+            --batch-mode \
+            build-helper:parse-version \
+            versions:set -DnewVersion='${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.nextIncrementalVersion}'
+            deploy
+            -B -DskipTests=true
