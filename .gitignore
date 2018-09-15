@@ -3,5 +3,8 @@
 /**/.m2
 /**/.idea/*
 /**/*.iml
-/**/target
+/**/target/*
 /**/pom.xml.releaseBackup
+/**/static/built/**
+/**/node_modules/*
+/**/package-lock.json
