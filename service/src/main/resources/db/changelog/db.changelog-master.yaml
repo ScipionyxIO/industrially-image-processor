@@ -1,0 +1,112 @@
+databaseChangeLog:
+- changeSet:
+    id: 1
+    author: Renato Mendes
+    changes:
+    - createSequence:
+        cycle: false
+        incrementBy: 1
+        maxValue: 100000000
+        minValue: 1
+        ordered: true
+        sequenceName: hibernate_sequence
+    - createTable:
+        tableName: de_training
+        columns:
+        - column:
+            name: id
+            type: bigint
+            constraints:
+              primaryKey: true
+              nullable: false
+        - column:
+            name: batch_size
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: created
+            type: datetime
+            constraints:
+              nullable: true
+        - column:
+            name: created_by
+            type: varchar(255)
+            constraints:
+              nullable: true
+        - column:
+            name: description
+            type: varchar(4000)
+            constraints:
+              nullable: true
+        - column:
+            name: epochs
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: model_type
+            type: varchar(255)
+            constraints:
+              nullable: true
+        - column:
+            name: name
+            type: varchar(255)
+            constraints:
+              nullable: true
+        - column:
+            name: number_of_color_conversion_transformations
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: number_of_flip_transformations
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: number_of_warp_transformations
+            type: int
+            constraints:
+              nullable: false
+        - column:
+            name: seed
+            type: bigint
+            constraints:
+              nullable: false
+        - column:
+            name: shuffle_transformations
+            type: bit
+            constraints:
+              nullable: false
+        - column:
+            name: split_train_test
+            type: double
+            constraints:
+              nullable: false
+        - column:
+            name: use_transformations
+            type: bit
+            constraints:
+              nullable: false
+    - createTable:
+        tableName: de_training_labels
+        columns:
+        - column:
+            name: training_id
+            type: bigint
+            constraints:
+              nullable: false
+        - column:
+            name: labels
+            type: varchar(255)
+            constraints:
+              nullable: true
+    - addForeignKeyConstraint:
+        baseColumnNames: training_id
+        baseTableName: de_training_labels
+        constraintName: fk_de_training_id
+        onDelete: CASCADE
+        onUpdate: RESTRICT
+        referencedColumnNames: id
+        referencedTableName: de_training

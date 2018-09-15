@@ -27,7 +27,7 @@ cache:
 addons:
   sonarcloud:
     organization: "scipionyx-io-industrially"
-    projectKey: "scipionyx-io-industrially-starters"
+    projectKey: "scipionyx-io-industrially-image-recognizer"
     token:
       secure: 5d31480c120e3a014ffabe4fb506dd7d585c91e7
 
@@ -43,9 +43,9 @@ jobs:
     script: mvn -s settings.xml --batch-mode deploy
   - stage: release
     script: |
-            mvn -s settings.xml \
-            --batch-mode \
-            build-helper:parse-version \
-            versions:set -DnewVersion='${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.nextIncrementalVersion}'
-            deploy
-            -B -DskipTests=true
+      mvn -s settings.xml \
+      --batch-mode \
+      build-helper:parse-version \
+      versions:set -DnewVersion='${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.nextIncrementalVersion}'
+      deploy
+      -B -DskipTests=true

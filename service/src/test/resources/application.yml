@@ -1,0 +1,58 @@
+#
+server:
+  port: 6011
+  compression:
+    enabled: true
+    min-response-size: 1
+    mime-types:
+    - application/hal+json
+    - application/json
+    - application/xml
+    - text/html
+    - text/xml
+    - text/plain
+
+spring:
+  application:
+    name: scipionyx-industrially-imagerecon-service
+    admin:
+      enabled: true
+  jpa.hibernate.ddl-auto: update
+  datasource:
+    url: jdbc:mariadb://localhost:3306/scipionyx_industrially_image_recon
+    username: user
+    password: user
+  data:
+    rest:
+      base-path: rest-repository
+      max-page-size: 1000
+
+eureka.client:
+  enabled: false
+  serviceUrl:
+    defaultZone: ${EUREKA_URI:http://localhost:5001/eureka}
+
+logging:
+  level:
+    io.scipionyx: DEBUG
+    org:
+      springframework.cache: DEBUG
+      hibernate.SQL: DEBUG
+
+scipionyx:
+  useAws: false
+  industrially:
+    imagerecon:
+      modeling:
+        modelFolder: /Users/rmendes/Scipionyx/industrially/models/
+        observationFolder: file://Users/rmendes/Scipionyx/industrially/observations
+        trainingFolder: file://Users/rmendes/Scipionyx/industrially/training
+
+cloud.aws:
+  credentials:
+    accessKey: AKIAJNCKPCHOC7YDTCLA
+    secretKey: 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
+    instanceProfile:
+    useDefaultAwsCredentialsChain:
+  region:
+    static: us-east-2
