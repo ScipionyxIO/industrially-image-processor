@@ -13,6 +13,7 @@ import io.scipionyx.industrially.imagerecon.service.training.OrchestratorService
 import io.scipionyx.industrially.imagerecon.service.training.TrainingSerializerService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -54,7 +55,8 @@ public class TrainingServiceTest {
     @Autowired
     private TrainingRepository trainingRepository;
 
-    //@Test
+    @Test
+    @Ignore
     public void test_01() throws IOException {
         StopWatch stopWatch = new StopWatch();
         Modeling modeling = modelingRepository.
@@ -105,6 +107,7 @@ public class TrainingServiceTest {
     }
 
     @Test
+    @Ignore
     public void test_02() {
         Optional<Training> training = trainingRepository.findById(222L);
         Assert.isTrue(training.isPresent(), "Training must be found");
