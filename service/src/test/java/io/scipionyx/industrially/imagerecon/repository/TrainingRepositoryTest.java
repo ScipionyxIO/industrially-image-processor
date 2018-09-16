@@ -36,7 +36,7 @@ public class TrainingRepositoryTest {
                         "Modeling Description").build());
         Assert.assertNotNull("Training Id must be Not null after save", modeling.getId());
 //        trainingRepository.save(Training.(modeling,
-//                ModelType.AlexNet,
+//                ModelType.ALEX_NET,
 //                1234l,
 //                10, 10,
 //                10,

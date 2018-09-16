@@ -90,7 +90,7 @@ public class TrainingServiceTest {
         Training training = Training.
                 builder().
                 modeling(modeling).
-                modelType(ModelType.LeNet).
+                modelType(ModelType.LE_NET).
                 seed(40).
                 epochs(20).batchSize(20).
                 splitTrainTest(.08d).
