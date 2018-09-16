@@ -50,8 +50,8 @@ scipionyx:
 
 cloud.aws:
   credentials:
-    accessKey: AKIAJNCKPCHOC7YDTCLA
-    secretKey: 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
+    accessKey: XXXXX
+    secretKey: XXXXX
     instanceProfile:
     useDefaultAwsCredentialsChain:
   region:
