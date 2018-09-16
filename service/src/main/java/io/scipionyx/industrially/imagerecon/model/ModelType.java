@@ -5,6 +5,6 @@ package io.scipionyx.industrially.imagerecon.model;
  */
 public enum ModelType {
 
-    AlexNet, LeNet, VGG19, Darknet19, TinyYOLO, YOLO2
+    ALEX_NET, LE_NET, VGG19, DARKNET_19, TINY_YOLO, YOLO2
 
 }

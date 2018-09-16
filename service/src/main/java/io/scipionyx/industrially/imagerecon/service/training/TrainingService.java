@@ -57,13 +57,14 @@ public class TrainingService {
     }
 
     private ImageRecordReader createRecordReader(Context context) throws IOException {
-        ImageRecordReader recordReader = new ImageRecordReader(
+        try (ImageRecordReader recordReader = new ImageRecordReader(
                 context.getShapes()[1],
                 context.getShapes()[2],
                 context.getShapes()[0],
-                context.getLabelGenerator());
-        recordReader.initialize(context.getTrainData(), null);
-        return recordReader;
+                context.getLabelGenerator())) {
+            recordReader.initialize(context.getTrainData(), null);
+            return recordReader;
+        }
     }
 
     private DataSetIterator createDataSetIterator(Training training,

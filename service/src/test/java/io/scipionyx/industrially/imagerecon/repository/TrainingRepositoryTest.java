@@ -5,6 +5,7 @@ import io.scipionyx.industrially.imagerecon.model.Modeling;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -30,13 +31,14 @@ public class TrainingRepositoryTest {
     private TrainingRepository trainingRepository;
 
     @Test
+    @Ignore
     public void test_01() {
         Modeling modeling = modelingRepository.
                 save(Modeling.builder().name("Modeling Name - test 1").description(
                         "Modeling Description").build());
         Assert.assertNotNull("Training Id must be Not null after save", modeling.getId());
 //        trainingRepository.save(Training.(modeling,
-//                ModelType.AlexNet,
+//                ModelType.ALEX_NET,
 //                1234l,
 //                10, 10,
 //                10,
