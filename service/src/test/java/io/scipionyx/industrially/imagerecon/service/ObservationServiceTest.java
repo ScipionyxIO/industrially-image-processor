@@ -7,6 +7,7 @@ import io.scipionyx.industrially.imagerecon.repository.ModelingRepository;
 import io.scipionyx.industrially.imagerecon.service.observation.ObservationService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -33,6 +34,7 @@ public class ObservationServiceTest {
     private ObservationService service;
 
     @Test
+    @Ignore
     public void test_01() throws IOException {
         Modeling modeling = repository.
                 save(Modeling.builder().name("Modeling Name - test 1").description(
@@ -45,6 +47,7 @@ public class ObservationServiceTest {
     }
 
     @Test
+    @Ignore
     public void test_02() throws IOException {
         Modeling modeling = repository.
                 save(Modeling.builder().name("Modeling Name - test 2").description(

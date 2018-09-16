@@ -5,6 +5,7 @@ import io.scipionyx.industrially.imagerecon.model.Modeling;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -27,6 +28,7 @@ public class ModelingRepositoryTest {
     private ModelingRepository repository;
 
     @Test
+    @Ignore
     public void test_01() {
         Modeling modeling = repository.save(Modeling.
                 builder().

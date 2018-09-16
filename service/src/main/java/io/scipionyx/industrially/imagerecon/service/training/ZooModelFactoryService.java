@@ -39,7 +39,7 @@ class ZooModelFactoryService {
     ZooModel instance(Training training, Context context) {
         ZooModel model;
         switch (training.getModelType()) {
-            case LeNet:
+            case LE_NET:
                 model = LeNet.builder().
                         numClasses(context.getLabelsCount()).
                         seed(training.getSeed()).
@@ -48,7 +48,7 @@ class ZooModelFactoryService {
                         cudnnAlgoMode(ConvolutionLayer.AlgoMode.PREFER_FASTEST).
                         build();
                 break;
-            case AlexNet:
+            case ALEX_NET:
                 model = AlexNet.builder().
                         numClasses(context.getLabelsCount()).
                         seed(training.getSeed()).
@@ -63,13 +63,13 @@ class ZooModelFactoryService {
                         seed(training.getSeed()).
                         build();
                 break;
-            case Darknet19:
+            case DARKNET_19:
                 model = Darknet19.builder().
                         numClasses(context.getLabelsCount()).
                         seed(training.getSeed()).
                         build();
                 break;
-            case TinyYOLO:
+            case TINY_YOLO:
                 model = TinyYOLO.builder().
                         numClasses(context.getLabelsCount()).
                         seed(training.getSeed()).
