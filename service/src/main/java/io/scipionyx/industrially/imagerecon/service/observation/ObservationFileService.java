@@ -40,15 +40,15 @@ public class ObservationFileService implements ObservationService {
     @PostConstruct
     public void init() throws IOException {
         Assert.notNull(configuration.getObservationFolder(),
-                "Target Folder must be defined at: scipionyx.industrially.imagerecon.modeling.observationFolder");
+                "Target Folder must be defined at (Not null): scipionyx.industrially.imagerecon.modeling.observationFolder");
         Assert.isTrue(configuration.getObservationFolder().getFile().exists(),
-                "Target Folder must be defined at: scipionyx.industrially.imagerecon.modeling.observationFolder");
+                "Target Folder must be defined at (Exists) : scipionyx.industrially.imagerecon.modeling.observationFolder");
         Assert.isTrue(configuration.getObservationFolder().getFile().isDirectory(),
-                "Target Folder must be defined at: scipionyx.industrially.imagerecon.modeling.observationFolder");
+                "Target Folder must be defined at (Is Directory): scipionyx.industrially.imagerecon.modeling.observationFolder");
         Assert.notNull(configuration.getTrainingFolder(),
-                "Training Folder must be defined at: scipionyx.industrially.imagerecon.modeling.TrainingFolder - NULL");
+                "Training Folder must be defined at (Not null): scipionyx.industrially.imagerecon.modeling.TrainingFolder - NULL");
         Assert.isTrue(configuration.getTrainingFolder().getFile().isDirectory(),
-                "Training Folder must be defined at: scipionyx.industrially.imagerecon.modeling.TrainingFolder");
+                "Training Folder must be defined at (Is diretory): scipionyx.industrially.imagerecon.modeling.TrainingFolder");
     }
 
     @Override
@@ -75,7 +75,7 @@ public class ObservationFileService implements ObservationService {
     private Try<Observation> handle(Observation observation) {
         log.info("Handling Observation: {}, is file null: {}", observation.getId(), observation.getFile() == null);
         return Try.of(() -> {
-            int BUFFER = 2048;
+            int buffer = 2048;
             Path folder = Paths.get(configuration.getTrainingFolder().getFile().toString(),
                     observation.getModeling().getId().toString(),
                     observation.getLabel());
@@ -98,11 +98,11 @@ public class ObservationFileService implements ObservationService {
                 if (!entry.isDirectory()) {
                     BufferedInputStream is = new BufferedInputStream(zipFile.getInputStream(entry));
                     int currentByte;
-                    byte data[] = new byte[BUFFER];
+                    byte[] data = new byte[buffer];
                     FileOutputStream fos = new FileOutputStream(destFile);
                     BufferedOutputStream dest = new BufferedOutputStream(fos,
-                            BUFFER);
-                    while ((currentByte = is.read(data, 0, BUFFER)) != -1) {
+                            buffer);
+                    while ((currentByte = is.read(data, 0, buffer)) != -1) {
                         dest.write(data, 0, currentByte);
                     }
                     dest.flush();

@@ -29,26 +29,22 @@ class Context implements Serializable {
 
     @JsonIgnore
     @Transient
-    private InputSplit trainData;
+    private transient InputSplit trainData;
 
     @JsonIgnore
     @Transient
-    private InputSplit testData;
+    private transient InputSplit testData;
 
     @JsonIgnore
     @Transient
-    private PathLabelGenerator labelGenerator;
+    private transient PathLabelGenerator labelGenerator;
 
     @JsonIgnore
     @Transient
-    private DataNormalization dataNormalizer;
+    private transient DataNormalization dataNormalizer;
 
     @JsonIgnore
     @Transient
-    private List<Pair<ImageTransform, Double>> pipeline;
-
-    //public ImageTransform transform(boolean shuffleTransformations) {
-    //    return new PipelineImageTransform(pipeline, shuffleTransformations);
-    //}
+    private transient List<Pair<ImageTransform, Double>> pipeline;
 
 }
