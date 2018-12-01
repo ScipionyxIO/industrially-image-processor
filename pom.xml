@@ -14,29 +14,13 @@
 
     <parent>
         <groupId>io.scipionyx.common.starters</groupId>
-        <artifactId>parent</artifactId>
+        <artifactId>java-microapp</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <repositories>
-        <repository>
-            <id>scipionyx-nexus-snapshot</id>
-            <url>http://nexus.scipionyx.org/repository/scipionyx-io-snapshot/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>scipionyx-nexus-release</id>
-            <url>http://nexus.scipionyx.org/repository/scipionyx-io-release/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <modules>
         <module>service</module>
+        <module>web</module>
     </modules>
 
 </project>

@@ -22,6 +22,8 @@ import java.io.IOException;
 @Slf4j
 class TrainingSerializerFileService implements TrainingSerializerService {
 
+    private final static String EXTENSION = ".model";
+
     private final TrainingConfiguration configuration;
 
     @Autowired
@@ -39,18 +41,18 @@ class TrainingSerializerFileService implements TrainingSerializerService {
         log.info("Loading Training: {}", training.getId());
         return ModelSerializer.restoreMultiLayerNetwork(
                 FilenameUtils.concat(configuration.getModelFolder(),
-                        training.getId() + ".model"));
+                        training.getId() + EXTENSION));
     }
 
     @Override
     public void save(Model model, Training training) throws IOException {
         ModelSerializer.writeModel(model,
-                new File(FilenameUtils.concat(configuration.getModelFolder(), training.getId() + ".model")),
+                new File(FilenameUtils.concat(configuration.getModelFolder(), training.getId() + EXTENSION)),
                 true);
     }
 
     public void delete(Training training) throws IOException {
         FileUtils.forceDelete(new File(FilenameUtils.
-                concat(configuration.getModelFolder(), training.getId() + ".model")));
+                concat(configuration.getModelFolder(), training.getId() + EXTENSION)));
     }
 }

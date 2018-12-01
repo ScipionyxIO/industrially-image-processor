@@ -37,6 +37,7 @@ public class ObservationS3Service implements ObservationService {
     @Override
     public Observation save(Observation observation, InputStream inputStream) {
         // save file to S3
+
         amazonS3.putObject(new PutObjectRequest(
                 calculateBucketName(observation),
                 observation.getModeling().getId().toString(),

@@ -13,11 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import reactor.core.publisher.Flux;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
 
 @RestController
 @Slf4j
@@ -39,7 +38,7 @@ public class EvaluationController {
     }
 
     @PostMapping("/api/v1/evaluate/{trainingId}")
-    public List<String> evaluate(@PathVariable Long trainingId,
+    public Flux<String> evaluate(@PathVariable Long trainingId,
                                  @RequestParam(name = "image") MultipartFile image) throws IOException {
         // write temp file
         File file = File.createTempFile("tmp", "tmp");
@@ -47,7 +46,7 @@ public class EvaluationController {
         Training training = trainingService.get(trainingId);
         Model model = serializerService.load(training);
         int[] result = predict.predict(model, image.getInputStream());
-        return Collections.singletonList("This is a " + training.getLabels().get(result[0]));
+        return Flux.just("This is a " + training.getLabels().get(result[0]));
     }
 
 }

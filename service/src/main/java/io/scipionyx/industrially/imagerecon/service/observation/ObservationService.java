@@ -17,4 +17,5 @@ public interface ObservationService {
     void deleteAll(Modeling modeling) throws IOException;
 
     Try<Observation> delete(Observation observation);
+
 }

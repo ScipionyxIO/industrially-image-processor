@@ -7,8 +7,10 @@ import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
 import org.springframework.context.annotation.AdviceMode;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.core.io.ClassPathResource;
 
+@Lazy
 @Configuration
 @EnableCaching(mode = AdviceMode.PROXY)
 class CachingConfiguration {
