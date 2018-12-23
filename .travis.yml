@@ -26,6 +26,7 @@ cache:
 
 addons:
   sonarcloud:
+    branch.name: $TRAVIS_BRANCH
     organization: "scipionyx-io-industrially"
     projectKey: "scipionyx-io-industrially-image-recognizer"
     token:
