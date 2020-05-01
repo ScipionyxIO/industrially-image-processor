@@ -30,10 +30,13 @@
     "rest": "^2.0.0",
     "webpack": "^2.0.0",
     "ag-grid": "^17.1.0",
-    "ag-grid-react": "^17.1.0"
+    "ag-grid-react": "^17.1.0",
+    "snyk": "^1.316.1"
   },
   "scripts": {
-    "watch": "webpack --watch -d"
+    "watch": "webpack --watch -d",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "devDependencies": {
     "babel-core": "^6.18.2",
@@ -43,5 +46,6 @@
     "babel-preset-react": "^6.16.0",
     "css-loader": "^0.28.11",
     "style-loader": "^0.21.0"
-  }
+  },
+  "snyk": true
 }
