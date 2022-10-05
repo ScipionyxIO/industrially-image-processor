@@ -28,9 +28,9 @@
     "react-dom-factories": "^1.0.2",
     "react-bootstrap": "^0.32.1",
     "rest": "^2.0.0",
-    "webpack": "^2.0.0",
+    "webpack": "^4.0.0",
     "ag-grid": "^17.1.0",
-    "ag-grid-react": "^17.1.0"
+    "ag-grid-react": "^19.1.1"
   },
   "scripts": {
     "watch": "webpack --watch -d"
